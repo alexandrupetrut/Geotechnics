@@ -1,0 +1,78 @@
+{
+    "name": "geo-calc-app",
+    "productName": "Coges Grup - Taluz",
+    "version": "1.0.0",
+    "description": "Calculul factorului de stabilitate minim al unui taluz (geotehnica)",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "electron-forge start",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish",
+        "lint": "echo \"No linting configured\"",
+        "build-installer": "electron-builder"
+    },
+    "build": {
+        "appId": "geo-calc-app",
+        "win": {
+            "target": [
+                "nsis"
+            ],
+            "icon": "src/icon.ico",
+            "requestedExecutionLevel": "requireAdministrator"
+        },
+        "nsis": {
+            "installerIcon": "src/icon.ico",
+            "uninstallerIcon": "src/icon.ico",
+            "uninstallDisplayName": "Coges Grup Calcul Taluz",
+            "license": "license.txt",
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true
+        }
+    },
+    "keywords": [],
+    "author": {
+        "name": "Alexandru-Petrut Popa",
+        "email": "popa@cngroup.dk"
+    },
+    "license": "MIT",
+    "config": {
+        "forge": {
+            "packagerConfig": {},
+            "makers": [{
+                    "name": "@electron-forge/maker-squirrel",
+                    "config": {
+                        "name": "geo_calc_app"
+                    }
+                },
+                {
+                    "name": "@electron-forge/maker-zip",
+                    "platforms": [
+                        "darwin"
+                    ]
+                },
+                {
+                    "name": "@electron-forge/maker-deb",
+                    "config": {}
+                },
+                {
+                    "name": "@electron-forge/maker-rpm",
+                    "config": {}
+                }
+            ]
+        }
+    },
+    "dependencies": {
+        "big.js": "^6.0.3",
+        "electron-squirrel-startup": "^1.0.0"
+    },
+    "devDependencies": {
+        "@electron-forge/cli": "^6.0.0-beta.54",
+        "@electron-forge/maker-deb": "^6.0.0-beta.54",
+        "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+        "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+        "@electron-forge/maker-zip": "^6.0.0-beta.54",
+        "electron-builder": "^22.9.1",
+        "electron": "11.2.3"
+    }
+}
